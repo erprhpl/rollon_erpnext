@@ -10,14 +10,27 @@ def execute(filters=None):
     columns, data = [], []
     columns=get_columns()
     data=get_data(filters)
-#    filtersub=get_filtersub()
     return columns, data
 
 def get_columns():
     return [
-    _("Raw Material Consumed") + ":Link/Item:230",
-    _("Qty consumed") + ":Float:120"
+#         if filters.get("details"):
+#          return [
+#            if filters.get("details")=="Low Details":
+#             return [
+#              _("Raw Material Consumed") + ":Link/Item:230",
+#              _("Qty consumed") + ":Float:120"
+#             ]
+#            elif filters.get("details")=="More Details":
+#             return [
+              _("Posting Date") + ":Date:100",
+              _("ID") + ":Data:120",
+              _("Raw Material Supplied") + ":Data:180",             
+              _("Qty Supplied") + ":Float:100",
+              _("Item Received") + ":Data:230",
+              _("Qty Received") + ":Float:100"
     ]
+
 def get_data(filters):
     if filters.get("from_date","to_date"):
         from_date=filters.get("from_date")
@@ -29,7 +42,7 @@ def get_data(filters):
             consumption_type="Manufacture"
             return frappe.db.sql("""
             SELECT DISTINCT
-            B.item_name,SUM(B.qty)
+            B.item_name,SUM(B.qty),B.qty,B.qty,B.qty,B.qty
 
             FROM
             `tabStock Entry` AS A,
@@ -60,4 +73,4 @@ def get_data(filters):
             && A.posting_date >= '%s' && A.posting_date <= '%s'
             && D.item_group='%s'
             ORDER BY D.item_name ASC """ %(from_date,to_date,item_group), as_list=1)
-    return 
+    return
