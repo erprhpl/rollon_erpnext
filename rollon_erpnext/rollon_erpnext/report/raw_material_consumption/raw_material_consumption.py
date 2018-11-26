@@ -1,4 +1,4 @@
-# Copyright (c) 2013, MN Technique and contributors
+#copyright (c) 2013, MN Technique and contributors
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
@@ -24,11 +24,11 @@ def get_columns():
 #            elif filters.get("details")=="More Details":
 #             return [
               _("Posting Date") + ":Date:100",
-              _("ID") + ":Data:120",
-              _("Raw Material Supplied") + ":Data:180",             
-              _("Qty Supplied") + ":Float:100",
-              _("Item Received") + ":Data:230",
-              _("Qty Received") + ":Float:100"
+              _("ID") + ":Link/Stock Entry:140",
+              _("Raw Material Consumed/ Supplied") + ":Data:220",
+              _("Qty Supplied (Kg's)") + ":Float:120",
+              _("Item Manufactured/Received") + ":Data:240",
+              _("Qty Received (No's)") + ":Float:130"
     ]
 
 def get_data(filters):
@@ -41,19 +41,27 @@ def get_data(filters):
         if filters.get("consumption_type")=="Inhouse Consumption":
             consumption_type="Manufacture"
             return frappe.db.sql("""
-            SELECT DISTINCT
-            B.item_name,SUM(B.qty),B.qty,B.qty,B.qty,B.qty
-
+            SELECT
+            A.posting_date,
+            A.name,
+            case when C.item_group="Raw Material" then B.item_name end,
+            case when C.stock_uom="Kg" then B.qty end,
+            if (C.item_group<>"Raw Material", B.item_name,B.item_name),
+            B.qty
             FROM
             `tabStock Entry` AS A,
             `tabStock Entry Detail` AS B,
             `tabItem` AS C
+
             WHERE
             A.name=B.parent
             && B.item_name=C.item_name
             && A.posting_date >= '%s' && A.posting_date <= '%s'
-            && C.item_group = '%s' && A.purpose = '%s'
-            ORDER BY B.item_name ASC """ %(from_date,to_date,item_group,consumption_type), as_list=1)
+            && C.item_group = '%s'
+            && A.purpose = '%s'
+/*            && A.test="Raw Material" */
+            ORDER BY B.item_code
+            ASC """ %(from_date,to_date,item_group,consumption_type), as_list=1)
 
         elif filters.get("consumption_type")=="Supplier Consumption":
             return frappe.db.sql("""
