@@ -8,15 +8,15 @@
  "idx": 0, 
  "is_standard": "Yes", 
  "letter_head": "ROLLON Letter Head", 
- "modified": "2018-11-14 11:55:13.146666", 
+ "modified": "2018-12-01 18:06:14.390089", 
  "modified_by": "Administrator", 
  "module": "Rollon ERPNext", 
  "name": "CR Item Masters", 
  "owner": "Administrator", 
- "query": "SELECT\n`tabItem`.process_no as \"Process No:Data:80\",\n`tabItem`.name as \"Item Code:Link/Item:120\",\n`tabItem`.item_name as \"Item Name:Data:270\",\n`tabItem`.rollon_code as \"ROLLON Code:Data:130\",\n`tabItem`.item_group as \"Item Group:Data:130\",\n`tabItem`.description as \"Description:Data:250\"\n\nFROM\n`tabItem`\n\nORDER BY `tabItem`.rollon_code DESC, `tabItem`.process_no DESC", 
+ "query": "SELECT\nA.process_no as \"Process No:Data:80\",\nA.name as \"Item Code:Link/Item:140\",\nA.item_name as \"Item Name:Data:270\",\nA.rollon_code as \"ROLLON Code:Data:130\",\nA.item_group as \"Item Group:Data:130\",\nA.description as \"Description:Data:250\"\n\nFROM\n`tabItem` AS A\n\nWHERE\nA.item_group=%(item_group)s\n\nORDER BY A.rollon_code DESC, A.process_no DESC\n", 
  "ref_doctype": "Item", 
  "report_name": "CR Item Masters", 
- "report_type": "Query Report", 
+ "report_type": "Script Report", 
  "roles": [
   {
    "role": "System Manager"
