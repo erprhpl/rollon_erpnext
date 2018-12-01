@@ -8,7 +8,7 @@
  "idx": 0, 
  "is_standard": "Yes", 
  "letter_head": "ROLLON Letter Head", 
- "modified": "2018-11-09 16:20:17.355410", 
+ "modified": "2018-12-01 23:35:25.256011", 
  "modified_by": "Administrator", 
  "module": "Rollon ERPNext", 
  "name": "CR BOM Masters", 
@@ -16,22 +16,13 @@
  "query": "SELECT\n`tabBOM`.name as \"ID:Link/BOM:200\",\n`tabItem`.item_name as \"Item Name:Data:250\",\n`tabItem`.rollon_code as \"ROLLON Code:Data:100\",\n`tabItem`.item_group as \"Item Group:Data:130\"\n\nFROM\n`tabBOM`,\n`tabItem`\n\nWHERE\n`tabBOM`.item_name=`tabItem`.item_name\nORDER BY `tabItem`.rollon_code ASC, `tabItem`.name ASC", 
  "ref_doctype": "BOM", 
  "report_name": "CR BOM Masters", 
- "report_type": "Query Report", 
+ "report_type": "Script Report", 
  "roles": [
   {
-   "role": "Manufacturing User"
-  }, 
-  {
-   "role": "Item Manager"
-  }, 
-  {
-   "role": "Stock User"
-  }, 
-  {
-   "role": "Stock Manager"
-  }, 
-  {
    "role": "Director"
+  }, 
+  {
+   "role": "System Manager"
   }
  ]
 }
