@@ -40,7 +40,7 @@ def get_data(filters):
   `tabItem` AS A
   
   WHERE
-  A.item_group=%(item_group)s  
+  A.item_group = '%s'
   ORDER BY A.rollon_code DESC, A.process_no DESC """ %(item_group), as_list=1)
 
  else:
