@@ -8,21 +8,19 @@ from frappe.utils import flt, getdate
 
 def execute(filters=None):
     columns, data = [], []
-    columns=get_columns()
+    columns=get_columns(filters)
     data=get_data(filters)
     return columns, data
 
-def get_columns():
+def get_columns(filters):
+  if filters.get("details"):
+   if filters.get("details")=="Low Details":
     return [
-#         if filters.get("details"):
-#          return [
-#            if filters.get("details")=="Low Details":
-#             return [
-#              _("Raw Material Consumed") + ":Link/Item:230",
-#              _("Qty consumed") + ":Float:120"
-#             ]
-#            elif filters.get("details")=="More Details":
-#             return [
+    _("Raw Material Consumed") + ":Link/Item:230",
+    _("Qty Consumed") + ":Float:120"
+   ]
+  else:
+    return [
               _("Posting Date") + ":Date:100",
               _("ID") + ":Link/Stock Entry:140",
               _("Raw Material Consumed/ Supplied") + ":Data:220",
@@ -37,7 +35,8 @@ def get_data(filters):
         to_date=filters.get("to_date")
     if filters.get("item_group"):
         item_group=filters.get("item_group")
-    if filters.get("consumption_type"):
+    
+       if filters.get("consumption_type"):
         if filters.get("consumption_type")=="Inhouse Consumption":
             consumption_type="Manufacture"
             return frappe.db.sql("""
@@ -81,4 +80,4 @@ def get_data(filters):
             && A.posting_date >= '%s' && A.posting_date <= '%s'
             && D.item_group='%s'
             ORDER BY D.item_name ASC """ %(from_date,to_date,item_group), as_list=1)
-    return
+#        return
