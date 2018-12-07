@@ -19,7 +19,7 @@ frappe.query_reports["CR Production Costing"] = {
 "label":__("Cycle"),
 "fieldtype":"Link",
 "options":"Cycle",
-"default":"CY181900001"
+"default":""
 },
 
 {

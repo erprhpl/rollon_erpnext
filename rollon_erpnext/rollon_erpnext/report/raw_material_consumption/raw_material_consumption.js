@@ -8,7 +8,8 @@ frappe.query_reports["Raw Material Consumption"] = {
         "fieldname":"from_date",
         "label":("From Date"),
         "fieldtype":"Date",
-        "default":frappe.defaults.get_user_default("year_start_date")
+        "default":frappe.datetime.month_start(date)
+//        "default":frappe.defaults.get_user_default("year_start_date")
         },
         {
         "fieldname":"to_date",
@@ -23,13 +24,14 @@ frappe.query_reports["Raw Material Consumption"] = {
         "options":["Inhouse Consumption","Supplier Consumption"],
         "default":"Inhouse Consumption"
         },
+
         {
         "fieldname":"details",
         "label":("Details"),
         "fieldtype":"Select",
         "options":["Less Details","More Details"],
         "default":"Less Details"
-        },
+        },        
         {
         "fieldname":"item_group",
         "label":("Item Group"),
