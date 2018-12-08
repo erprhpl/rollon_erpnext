@@ -39,5 +39,14 @@ frappe.query_reports["Raw Material Consumption"] = {
         "options":["Raw Material","SFG"],
         "default":"Raw Material"
         }
+//        {
+//        "fieldname":"supplier_balance",
+//        "label":("Supplier Balance"),
+//        "fieldtype":"Select",
+//        "options":["","Less Details","More Details"],
+//        "default":""
+//        }
+
     ]
+
 }
