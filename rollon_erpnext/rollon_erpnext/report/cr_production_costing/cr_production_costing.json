@@ -8,7 +8,7 @@
  "idx": 0, 
  "is_standard": "Yes", 
  "letter_head": "ROLLON Letter Head", 
- "modified": "2018-11-24 17:48:02.587661", 
+ "modified": "2018-12-14 12:42:07.626958", 
  "modified_by": "Administrator", 
  "module": "Rollon ERPNext", 
  "name": "CR Production Costing", 
@@ -19,16 +19,13 @@
  "report_type": "Query Report", 
  "roles": [
   {
-   "role": "Stock User"
+   "role": "Accounts Manager"
   }, 
   {
-   "role": "Manufacturing User"
+   "role": "Director"
   }, 
   {
-   "role": "Manufacturing Manager"
-  }, 
-  {
-   "role": "Stock Manager"
+   "role": "System Manager"
   }
  ]
 }

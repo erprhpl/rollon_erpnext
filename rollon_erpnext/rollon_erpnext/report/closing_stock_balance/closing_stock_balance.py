@@ -4,11 +4,12 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+from frappe.utils import flt, getdate
 
 def execute(filters=None):
 	columns, data = [], []
         columns=get_columns()
-        data=get_data()
+        data=get_data(filters)
 	return columns, data
 
 def get_columns():
@@ -21,7 +22,12 @@ def get_columns():
     _("Supplier Balance") + ":Float:120"
     ]
 
-def get_data():
+def get_data(filters):
+    if filters.get("from_date", "to_date"):
+     from_date=filters.get("from_date")
+     to_date=filters.get("to_date") 
+    if filters.get("item_group"):
+     item_group=filters.get("item_group")
     return frappe.db.sql("""
     SELECT
     A.item_code,
@@ -42,5 +48,7 @@ def get_data():
     A.item_code=B.item_code
     && D.item_name=B.item_name
     && E.item_code=A.item_code
-    GROUP BY A.item_code
-    ORDER BY B.item_name """)
+    && A.posting_date>='%s' && A.posting_date<='%s'
+    && B.item_group='%s'
+    GROUP BY B.item_group
+    ORDER BY B.item_name """ %(from_date,to_date,item_group), as_list=1)

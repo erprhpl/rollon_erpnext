@@ -1,0 +1,26 @@
+{
+ "attach_print": 0, 
+ "creation": "2018-12-10 17:32:07.836126", 
+ "date_changed": "posting_date", 
+ "days_in_advance": 1, 
+ "docstatus": 0, 
+ "doctype": "Email Alert", 
+ "document_type": "Stock Entry", 
+ "enabled": 1, 
+ "event": "Days After", 
+ "idx": 0, 
+ "is_standard": 1, 
+ "message": "Add your message here", 
+ "modified": "2018-12-10 17:33:35.647407", 
+ "modified_by": "Administrator", 
+ "module": "Rollon ERPNext", 
+ "name": "Raw Material Consumption", 
+ "owner": "Administrator", 
+ "recipients": [
+  {
+   "email_by_document_field": "", 
+   "email_by_role": "Administrator"
+  }
+ ], 
+ "subject": "Raw Material Consumption on {{posting_date}}"
+}

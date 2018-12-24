@@ -8,7 +8,7 @@
  "idx": 0, 
  "is_standard": "Yes", 
  "letter_head": "ROLLON Letter Head", 
- "modified": "2018-12-08 13:35:55.545251", 
+ "modified": "2018-12-14 11:13:37.783053", 
  "modified_by": "Administrator", 
  "module": "Rollon ERPNext", 
  "name": "CR Stock Ageing", 
@@ -17,27 +17,6 @@
  "report_name": "CR Stock Ageing", 
  "report_type": "Script Report", 
  "roles": [
-  {
-   "role": "Accounts User"
-  }, 
-  {
-   "role": "Sales User"
-  }, 
-  {
-   "role": "Item Manager"
-  }, 
-  {
-   "role": "Stock User"
-  }, 
-  {
-   "role": "Manufacturing User"
-  }, 
-  {
-   "role": "Stock Manager"
-  }, 
-  {
-   "role": "Purchase User"
-  }, 
   {
    "role": "System Manager"
   }, 

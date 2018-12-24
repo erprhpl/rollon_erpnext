@@ -121,7 +121,7 @@ def get_data(filters):
                    A.name,
                    D.item_name,
                    C.consumed_qty,
-                   B.item_code,
+                   B.item_name,
                    B.qty
 
                    FROM
