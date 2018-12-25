@@ -16,8 +16,8 @@ def get_columns():
     return [
     _("Item Name") + ":Data:250",
     _("Opening Stock") + ":Float:120",
-    _("Purchase") + ":Float:100",
-    _("Consumption") + ":Float:120",
+    _("Purchase Stock") + ":Float:100",
+    _("Consumed Stock") + ":Float:120",
     _("Closing Stock") + ":Float:120",
     _("Supplier Balance") + ":Float:120"
     ]
@@ -34,8 +34,8 @@ def get_data(filters):
     E.actual_qty,
     A.actual_qty,
     A.outgoing_rate,
-    sum(A.qty_after_transaction),
-    A.stock_value
+    A.qty_after_transaction,
+    A.actual_qty
 
     FROM
     `tabStock Ledger Entry` AS A,
