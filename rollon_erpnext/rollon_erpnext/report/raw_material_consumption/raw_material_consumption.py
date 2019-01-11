@@ -49,19 +49,20 @@ def get_data(filters):
         if filters.get("consumption_type")=="Inhouse Consumption":  
                consumption_type="Manufacture"
                if filters.get("details")=="More Details":
-#              111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+#              111111111111111111111111111111111 Inhouse consumption, More Details   111111111111111111111111111111111
                    return frappe.db.sql("""
                    SELECT
                    A.posting_date,
                    A.name,
                    case when C.item_group="Raw Material" then B.item_name end,
-                   case when C.stock_uom="Kg" then B.qty end,
+                   B.qty,
                    "To Be Programmed",
-                   "B.qty",
+                   "To be programmed",
                    "=>",
                    E.item_name,
                    E.qty,
-                   B.qty*E.qty,
+                   "To be programmed",
                    if(B.item_name=E.item_name,0,1),
                    if(B.qty=B.qty*E.qty,0,1)
                                       
@@ -81,10 +82,11 @@ def get_data(filters):
                    && A.posting_date >= '%s' && A.posting_date <= '%s' 
                    && C.item_group = '%s' 
                    && A.purpose = '%s'
+                   && A.docstatus=1
                    ORDER BY B.item_code ASC, A.name ASC """  %(from_date,to_date,item_group,consumption_type), as_list=1)
-#              1111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+#              111111111111111111111111111111111   Inhouse Consumption, Less Details 111111111111111111111111111111111
                elif filters.get("details")=="Less Details":
-#              11111111111111111111111111111111111111111111111111111111111111111111111111111111
                    return frappe.db.sql("""
                    SELECT
                    B.item_name,
@@ -103,10 +105,11 @@ def get_data(filters):
                    && A.posting_date >= '%s' && A.posting_date <= '%s'
                    && C.item_group='%s' 
                    && A.purpose = "Manufacture"
+                   && A.docstatus=1
                    ORDER BY B.item_name ASC """ %(from_date,to_date,item_group), as_list=1)
-#              1111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+#       111111111111111111    Supplier Consumption, Less Details  111111111111111111111111111111111111111111111111
         elif filters.get("consumption_type")=="Supplier Consumption":
-#       111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
                if filters.get("details")=="Less Details":
                    return frappe.db.sql("""
                    SELECT DISTINCT
@@ -130,6 +133,7 @@ def get_data(filters):
                    GROUP BY B.item_name 
                    ORDER BY D.item_name ASC """ %(from_date,to_date,item_group), as_list=1)
 
+#           ||||||||||||||||||||||||||||||   Supplier Consumption, More Details    ||||||||||||||||||||| 
                elif filters.get("details")=="More Details":
                    return frappe.db.sql("""
                    SELECT DISTINCT

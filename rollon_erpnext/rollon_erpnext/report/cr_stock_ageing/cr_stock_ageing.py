@@ -9,16 +9,17 @@ from frappe.utils import flt, getdate
 def execute(filters=None):
 	columns, data = [], []
         columns=get_columns()
-        data=get_data()
+        data=get_data(filters)
 	return columns, data
 
 def get_columns():
     return [
     _("Item Name") + ":Link/Item:300",
-    _("Balance") + ":Float:120"
+    _("Stock Balance") + ":Float:120"
     ]
 
-def get_data():
+def get_data(filters):
+   if filters.get("item_group"):
     return frappe.db.sql ("""
     SELECT
     A.item_name,
@@ -26,6 +27,9 @@ def get_data():
    
     FROM 
     `tabItem` AS A
+    
+    Where
+    A.item_group='%s'
 
-    ORDER BY A.item_name """)
+    ORDER BY A.item_name ASC """ %("item_group"), as_list=1)
 

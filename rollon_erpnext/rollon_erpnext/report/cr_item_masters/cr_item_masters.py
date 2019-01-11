@@ -22,11 +22,13 @@ def get_columns(filters):
       _("Item Name") + ":Data:270",
       _("ROLLON Code") + ":Data:130",
       _("Item Group") + ":Data:130",
-      _("description") + ":Data:250"
+      _("description") + ":Data:250",
+      _("Created By") + ":Data:120"
    ]
   else:
    return [
     _("Item Group") + ":Data:130",
+    _("Abbreviation") + ":Data:120",
     _("Total Item Masters") + ":Float:150"
    ]
 
@@ -42,7 +44,8 @@ def get_data(filters):
       A.item_name,
       A.rollon_code,
       A.item_group,
-      A.description
+      A.description,
+      A.owner
   
       FROM
       `tabItem` AS A
@@ -59,7 +62,8 @@ def get_data(filters):
       A.item_name,
       A.rollon_code,
       A.item_group,
-      A.description
+      A.description,
+      A.owner
   
       FROM
       `tabItem` AS A
@@ -68,8 +72,14 @@ def get_data(filters):
     return frappe.db.sql("""
     SELECT DISTINCT
     A.item_group,
+    B.abbreviation,
     count(A.name)
     
     FROM
-    `tabItem` AS A
+    `tabItem` AS A,
+    `tabItem Group` AS B
+
+    WHERE
+    A.item_group=B.name
+
     GROUP BY A.item_group  """ )

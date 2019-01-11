@@ -8,8 +8,19 @@ frappe.query_reports["CR Stock Ageing"] = {
         "fieldname":"range",
         "label": ("Range"),
         "fieldtype":"Select",
-        "options":["0-30","30-60","60-90","90-180"],
+        "options":["0-30","31-60","61-90","91-180","181-Above"],
         "default":"0-30"
+        },
+
+        {
+        "fieldname":"item_group",
+        "label":("Item Group"),
+        "fieldtype":"Link",
+        "options":"Item Group",
+        "default":"Raw Material"
         }
-	]
+
+
+    ]
+
 }
