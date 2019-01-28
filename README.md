@@ -6,11 +6,10 @@ ERPNext customisation for Rollon Hydraulics
 
 #### License
 
-MIT
+BT
 =======
-# dummy
-dummy
+# ROLLON Hydraulics
 >>>>>>> Initial commit
 =======
-# test
+# 
 >>>>>>> 740e7bd5fd653d9996a4d940d4152dd223b140ec
