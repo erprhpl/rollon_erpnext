@@ -105,10 +105,10 @@
    "_user_tags": null, 
    "amend": 0, 
    "apply_user_permissions": 0, 
-   "cancel": 1, 
-   "create": 1, 
+   "cancel": 0, 
+   "create": 0, 
    "creation": "2018-06-11 16:00:09.311122", 
-   "delete": 1, 
+   "delete": 0, 
    "docstatus": 0, 
    "email": 0, 
    "export": 0, 
@@ -129,9 +129,9 @@
    "role": "Accounts Manager", 
    "set_user_permissions": 0, 
    "share": 0, 
-   "submit": 1, 
+   "submit": 0, 
    "user_permission_doctypes": null, 
-   "write": 1
+   "write": 0
   }, 
   {
    "_assign": null, 
@@ -140,10 +140,10 @@
    "_user_tags": null, 
    "amend": 0, 
    "apply_user_permissions": 0, 
-   "cancel": 1, 
-   "create": 1, 
+   "cancel": 0, 
+   "create": 0, 
    "creation": "2018-09-11 11:51:53.367003", 
-   "delete": 1, 
+   "delete": 0, 
    "docstatus": 0, 
    "email": 0, 
    "export": 1, 
@@ -164,9 +164,9 @@
    "role": "Director", 
    "set_user_permissions": 0, 
    "share": 0, 
-   "submit": 1, 
+   "submit": 0, 
    "user_permission_doctypes": null, 
-   "write": 1
+   "write": 0
   }, 
   {
    "_assign": null, 
@@ -176,7 +176,7 @@
    "amend": 0, 
    "apply_user_permissions": 0, 
    "cancel": 0, 
-   "create": 1, 
+   "create": 0, 
    "creation": "2018-12-11 14:58:37.099100", 
    "delete": 0, 
    "docstatus": 0, 
@@ -198,10 +198,10 @@
    "report": 1, 
    "role": "Accounts User", 
    "set_user_permissions": 0, 
-   "share": 1, 
-   "submit": 1, 
+   "share": 0, 
+   "submit": 0, 
    "user_permission_doctypes": null, 
-   "write": 1
+   "write": 0
   }
  ], 
  "doctype": "Stock Reconciliation", 
