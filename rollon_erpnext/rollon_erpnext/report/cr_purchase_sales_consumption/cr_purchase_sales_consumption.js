@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["CR Purchase Stock"] = {
+frappe.query_reports["CR Purchase-Sales-Consumption"] = {
 	"filters": [
       {
       "fieldname":"from_date",

@@ -31,12 +31,10 @@ def get_data(filters):
          B.item_name,
          sum(B.qty),
          A.supplier
-
          FROM
          `tabPurchase Receipt` AS A,
          `tabPurchase Receipt Item` AS B,
          `tabItem` AS C
-
          WHERE
          A.name=B.parent
          && B.item_code=C.item_code
@@ -50,12 +48,10 @@ def get_data(filters):
          B.item_name,
          sum(B.qty),
          A.customer
-
          FROM
          `tabDelivery Note` AS A,
          `tabDelivery Note Item` AS B,
          `tabItem` AS C
-
          WHERE
          A.name=B.parent
          && B.item_code=C.item_code
@@ -69,12 +65,10 @@ def get_data(filters):
          B.item_name,
          sum(B.qty),
          B.s_warehouse
-
          FROM
          `tabStock Entry` AS A,
          `tabStock Entry Detail` AS B,
          `tabItem` AS C
-
          WHERE
          A.name=B.parent
          && B.item_code=C.item_code
@@ -89,12 +83,10 @@ def get_data(filters):
          B.item_name,
          sum(B.qty),
          B.t_warehouse
-
          FROM
          `tabStock Entry` AS A,
          `tabStock Entry Detail` AS B,
          `tabItem` AS C
-
          WHERE
          A.name=B.parent
          && B.item_code=C.item_code
@@ -102,6 +94,3 @@ def get_data(filters):
          && C.item_group='%s'
          && A.purpose="Material Receipt"
          GROUP BY B.item_name ASC """ %(from_date,to_date,item_group), as_list=1)
-
-
- 
