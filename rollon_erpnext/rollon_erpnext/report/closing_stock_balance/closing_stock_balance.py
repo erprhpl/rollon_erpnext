@@ -31,7 +31,7 @@ def get_data(filters):
      item_group=filters.get("item_group")
     return frappe.db.sql("""
            SELECT
-           I.item_group,
+           I.item_name,
            "0",
            sum(PRI.qty),
            "0",
@@ -56,6 +56,6 @@ def get_data(filters):
 /*           && DN.name=DNI.parent*/
 /*           && FROM I RIGHT JOIN DNI ON I.item_code=DNI.item_code */
            && PR.posting_date >= '%s' && PR.posting_date <= '%s' 
-/*           && I.item_group = '%s'*/
-           GROUP BY I.item_group
-           ORDER BY I.item_group ASC """ %(from_date,to_date,item_group), as_list=1 )
+           && I.item_group = '%s'
+           GROUP BY I.item_name
+           ORDER BY I.item_name ASC """ %(from_date,to_date,item_group), as_list=1 )

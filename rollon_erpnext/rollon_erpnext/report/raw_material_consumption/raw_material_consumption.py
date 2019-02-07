@@ -19,8 +19,10 @@ def get_columns(filters):
      return [
      _("Raw Material Consumed/Supplied") + ":Link/Item:230",
      _("Qty Consumed/Supplied") + ":Float:180",
+     _("UOM") + ":Data:80",
      _("Item Manufactured/Received") + ":Link/Item:230",
      _("Qty Manufactured/Received") + ":Float:180"
+#     _("UOM") + ":Data:80"
      ]
     else:
      return [
@@ -91,7 +93,8 @@ def get_data(filters):
                    SELECT
                    B.item_name,
                    sum(B.qty),
-                   "To Be Programed",
+                   B.uom,
+                   "To be Programed",
                    "To be programed"
 
                    FROM                                         
@@ -115,6 +118,7 @@ def get_data(filters):
                    SELECT DISTINCT
                    D.item_name,
                    sum(C.consumed_qty),
+                   "Kg",
                    B.item_name,
                    sum(B.qty)
 
